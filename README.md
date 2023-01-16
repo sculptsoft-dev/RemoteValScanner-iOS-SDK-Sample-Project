@@ -70,7 +70,7 @@ RVConfigClass.shared.configSDK(view: self.view , environment: RemoteValEnvironme
 - here you have to pass Enviornment Development from `RemoteValEnvironment` type
 - second you have to pass `Your_Client_key`
 
-2. The way to use `push VideoBaseScan` as a `UIViewController`
+2. The way to use `VideoBaseScan` as a `UIViewController`
 
 ```swift
 import RemotevalSDK
@@ -79,7 +79,7 @@ let cntrlVideoBaseScan = VideoBaseScan()
 self.navigationController?.pushViewController(cntrlVideoBaseScan, animated: true)
 ```
 Note: Here you need to provide `jobOrderId` and `floorName` to VideoBaseScan class.
-
+jobOrderId and floorName require because of create Zip file and you get fileName.
 
 
 ## Uploading Part
@@ -97,7 +97,7 @@ RVConfigClass.shared.getTanentToken(clientKey: String, successHandler: (() -> Vo
 ```
 
 
-2. Generate Order
+2. Generate Job Order
 
 When you call `generateJobOrder()` function you get jobOrderId.
 
