@@ -1,6 +1,26 @@
-# iOSRemotValScanner# RemoteVal Scanning SDK
+# iOSRemotValScanner
+# RemoteVal Scanning SDK
 
-## RemotevalDemo
+## Table of Contents
+
+* [Remoteval Demo](#remoteval-demo)
+* [Video based scan library module](#video-based-scan-library-module)
+* [Implementation](#implementation)
+    * [Insallation](#installation)
+    * [Setting up](#setting-up)
+    * [Device Orientation Setup](#device-orientation-setup)
+* [Remoteval SDK Features](#remoteval-sdk-features)
+    * [Adaptive Lighting](#adaptive-lighting)
+    * [Storage Warning](#storage-warning)
+    * [Feedback Gathering](#feedback-gathering)
+* [Permissions](#permissions)
+* [Configuration](#configuration)
+* [Uploading Part](#uploading-part)
+* [Custom Localization](#custom-localization)
+
+
+
+## Remoteval Demo
 
 This project provides an example implementation and use of the RemoteVal Video based scanning library module. From this project you can get the basic idea of how to implement the scanning with RemoteVal capture to your app.
 
@@ -11,12 +31,15 @@ scan a floor plan with an iOS device. The scanning `View Controller` saves scan 
 which your app can upload to the RemoteVal back-end for processing. RemoteVal SDK handles corner
 cases like fast scanning, Too near to wall, ceiling scanning to guide user for proper scanning
 
+## Implementation
+This implementation was made with xcode.
+
 ### Installation
 
-<!--The prefer way to install RemoteVal SDK is integrate framwork in your project Follow these steps -->
-<!--1. Select Project target-->
-<!--2. Select `General` tab-->
-<!--3. Click on plush button under `Framworks,Libraries, and Embedded Content`-->
+The preferred (and easiest) way to install the Remoteval SDK is with cocoapods. Add the following to your `Podfile`:
+
+```swift
+```
 
 ### Setting up
 
@@ -83,7 +106,13 @@ Remoteval SDK uses the device camera to capture the surroundings so you need to 
 1. You need to set `Developement Envirenemt and Provide Your Client Key` using this function put this in viewDidLoad()
 
 ```swift
-RVConfigClass.shared.configSDK(view: self.view , environment: RemoteValEnvironmet.dev, clientKey: `Your_Client_key`)
+
+RVConfigClass.shared.configSDK(environment: RemoteValEnvironmet.dev, clientKey: Constants.clientKey) {
+    //success
+} failureHandler: { rvError in
+    //onFailure
+}
+
 ```
 
 - here you have to pass Enviornment Development from `RemoteValEnvironment` type
@@ -95,6 +124,8 @@ RVConfigClass.shared.configSDK(view: self.view , environment: RemoteValEnvironme
 import RemotevalSDK
 ...
 let cntrlVideoBaseScan = VideoBaseScan()
+cntrlVideoBaseScan.jobOrderId = self.jobOrderId
+cntrlVideoBaseScan.floorName = self.floorName
 self.navigationController?.pushViewController(cntrlVideoBaseScan, animated: true)
 ```
 Note: Here you need to provide `jobOrderId` and `floorName` to VideoBaseScan class.
@@ -114,25 +145,40 @@ When you call `generateJobOrder()` function you get jobOrderId.
 
 ```swift
 //Create OrderInformation by filling below values
-let param = OrderInfoRequest(JSON:[
-            "jobOrderSource": "Sdk",
-            "latitude": "",
-            "longitude": "",
-            "ownerEmail": "",
-            "ownerName": "",
-            "ownerPhone": "",
-            "propertyAddress1": "",
-            "propertyCity": "",
-            "propertyCountry": "",
-            "propertyState": "",
-            "propertyType": "RECIDENTIAL",
-            "propertyZip": ""
-        ])
+let param = OrderInfoRequest(jobOrderSource: "sdk", 
+                             ownerEmail: "", 
+                             ownerName: "", 
+                             ownerPhone: "", 
+                             propertyAddress: "", 
+                             propertyCity: "", 
+                             propertyCountry: CountryModel, 
+                             propertyState: StateModel, 
+                             latitude: "", 
+                             lontitude: "", 
+                             propertyType: PropertyType.RESIDENTIAL OR PropertyType.COMMERCIAL, 
+                             propertyZip: txtPostalCode.text ?? "08002" )
+        
         
     RVConfigClass.shared.generateJobOrder(orderInfoRequest: param) { id in
         //id equals to jobOrderID
     }
 ```
+
+- Here you have to pass countryModel and StateModel in `propertyCountry` and `propertyState` parameter.
+
+- The way to use CountryModel and StateModel 
+
+```swift
+
+//For Country
+RVConfigClass.shared.allCountries
+
+//For State
+RVConfigClass.shared.allStates
+
+```
+
+- In Property you have to pass `PropertyType` type pf value , you can access by using `PropertyType` it self.
 
 
 2. Zip Creation and get file name and file path 
@@ -150,12 +196,12 @@ videoBaseScanVC.callBackAfterZipCreate = { (filePath, fileName) in
 ```
 
 
-3. After Getting jobOrderId you have to call function for get path for upload.
+3. After Getting jobOrderId you have to call function for get upload path.
 
 For get path you have to pass jobOrderId in param and call this function 
 
 ```swift 
-    RVConfigClass.shared.getUploadVideoPath(jobOrderId: job_Order_Id)
+    RVConfigClass.shared.getUploadStorage(jobOrderId: job_Order_Id)
 ```
  
 
@@ -164,7 +210,7 @@ For get path you have to pass jobOrderId in param and call this function
 You have to pass filePath and fileName here, which you get from previous call back.
 
 ```swift
-    RVConfigClass.shared.uploadFileToServer(filePath: filePath, fileName: fileName) {
+    RVConfigClass.shared.uploadScan(filePath: filePath, fileName: fileName) {
         //success
     } uploadComplition: { progress in
         //getProgress
@@ -185,7 +231,7 @@ Note:- `floorIndex` and `wallThickness` will get array from SDK and you can get 
 
 ```swift
 
-RVConfigClass.shared.floorScanStatusUpdate(jobOrderId: jobOrderId, 
+RVConfigClass.shared.uploadFloorScanDetail(jobOrderId: jobOrderId, 
                                             floorIndex: Int(floorIndex) ?? 0, 
                                             wallThickness: wallThickness, 
                                             fileName: fileName) {
@@ -198,7 +244,6 @@ RVConfigClass.shared.floorScanStatusUpdate(jobOrderId: jobOrderId,
 
 ## Custom Localization
 
-### Localization
 
 The Remoteval SDK is localizable to any language. At the moment we support only English translations but if your app has support for multiple languages you can easily also translate all texts in the SDK as well. If you want to use a different tone in the texts or something you can always define your own.
 
