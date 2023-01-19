@@ -90,7 +90,7 @@ Remoteval SDK features the Adaptive Lighting technique. During the scan if the l
 
 ### Storage Warning
 
-Remoteval SDK notifies the user if the device is running out of storage space. This feature is toggled with the .storageWarnings scanning option.
+Remoteval SDK notifies the user if the device is running out of storage space.
 
 ### Feedback Gathering
 
@@ -99,6 +99,13 @@ Remoteval SDK keeps a separate log of warnings during the scan. This will be use
 ## Permissions
 
 Remoteval SDK uses the device camera to capture the surroundings so you need to add the "Privacy - Camera Usage Description" to your projects Info.plist if you already haven't done so. The camera permission is required for the SDK, it cannot function without it.
+
+```xml
+
+   <key>NSCameraUsageDescription</key>
+	<string>uses your camera to allow the user scan the property</string>
+   
+```
 
 
 ## Configuration
@@ -118,15 +125,15 @@ RVConfigClass.shared.configSDK(environment: RemoteValEnvironmet.dev, clientKey: 
 - here you have to pass Enviornment Development from `RemoteValEnvironment` type
 - second you have to pass `Your_Client_key`
 
-2. The way to use `VideoBaseScan` as a `UIViewController`
+2. The way to use `RvVideoBaseScan` as a `UIViewController`
 
 ```swift
 import RemotevalSDK
 ...
-let cntrlVideoBaseScan = VideoBaseScan()
-cntrlVideoBaseScan.jobOrderId = self.jobOrderId
-cntrlVideoBaseScan.floorName = self.floorName
-self.navigationController?.pushViewController(cntrlVideoBaseScan, animated: true)
+let videoBaseScanVC = RvVideoBaseScan()
+videoBaseScanVC.jobOrderId = self.jobOrderId
+videoBaseScanVC.floorName = self.floorName
+self.navigationController?.pushViewController(videoBaseScanVC, animated: true)
 ```
 Note: Here you need to provide `jobOrderId` and `floorName` to VideoBaseScan class.
 jobOrderId and floorName require because of create Zip file and you get fileName.
@@ -145,28 +152,26 @@ When you call `generateJobOrder()` function you get jobOrderId.
 
 ```swift
 //Create OrderInformation by filling below values
-let param = OrderInfoRequest(jobOrderSource: "sdk", 
-                             ownerEmail: "", 
+let param = OrderInfoRequest(ownerEmail: "", 
                              ownerName: "", 
                              ownerPhone: "", 
                              propertyAddress: "", 
                              propertyCity: "", 
-                             propertyCountry: CountryModel, 
-                             propertyState: StateModel, 
+                             propertyCountry: RVCountry, 
+                             propertyState: RVState, 
                              latitude: "", 
                              lontitude: "", 
                              propertyType: PropertyType.RESIDENTIAL OR PropertyType.COMMERCIAL, 
-                             propertyZip: txtPostalCode.text ?? "08002" )
+                             propertyZip: "" )
         
         
-    RVConfigClass.shared.generateJobOrder(orderInfoRequest: param) { id in
-        //id equals to jobOrderID
-    }
+RVConfigClass.shared.generateJobOrder(orderInfoRequest: param) { id in
+   //id equals to jobOrderID
+}
 ```
 
 - Here you have to pass countryModel and StateModel in `propertyCountry` and `propertyState` parameter.
-
-- The way to use CountryModel and StateModel 
+- The way to use RVCountry and RVState 
 
 ```swift
 
@@ -188,8 +193,6 @@ fileName and filePath is require for upload file in server.
 
 ```swift
 
-let videoBaseScanVC = VideoBaseScan()
-
 videoBaseScanVC.callBackAfterZipCreate = { (filePath, fileName) in
 }
 
@@ -201,22 +204,31 @@ videoBaseScanVC.callBackAfterZipCreate = { (filePath, fileName) in
 For get path you have to pass jobOrderId in param and call this function 
 
 ```swift 
-    RVConfigClass.shared.getUploadStorage(jobOrderId: job_Order_Id)
+
+RVConfigClass.shared.getUploadStorageDetail(jobOrderId: job_Order_Id) { storageInfo in
+   //onSuccess
+} failureHandler: { rvError in
+   //onFailure
+}
+
 ```
  
 
 4. Upload Scanned file : Once you get filepath call this function for upload file to server
 
-You have to pass filePath and fileName here, which you get from previous call back.
+- You have to pass filePath and fileName here, which you get from call back of videoBaseScan class `callBackAfterZipCreate`.
+- You have to pass storageInfo, you get from on success of `getUploadStorageDetail` function.
 
 ```swift
-    RVConfigClass.shared.uploadScan(filePath: filePath, fileName: fileName) {
-        //success
-    } uploadComplition: { progress in
-        //getProgress
-    } failure: { error in
-        //errorhandling
-    }
+
+RVConfigClass.shared.uploadScan(filePath: filePath, fileName: fileName, storageInfo: storageInfo) {
+   //success
+} uploadComplition: { progress in
+   //getProgress
+} failure: { error in
+   //errorhandling
+}
+
 ```
 
 
@@ -235,11 +247,12 @@ RVConfigClass.shared.uploadFloorScanDetail(jobOrderId: jobOrderId,
                                             floorIndex: Int(floorIndex) ?? 0, 
                                             wallThickness: wallThickness, 
                                             fileName: fileName) {
-            // success
-            debugPrint("FloorScan Upload SuccessFully")
-        } failureHandler: { error in
-            //handleError Here
-        }
+   // success
+   debugPrint("FloorScan Upload SuccessFully")
+} failureHandler: { error in
+   //handleError Here
+}
+   
 ```
 
 ## Custom Localization
