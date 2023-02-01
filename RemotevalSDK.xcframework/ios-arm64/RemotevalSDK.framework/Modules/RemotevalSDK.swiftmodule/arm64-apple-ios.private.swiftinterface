@@ -1,0 +1,482 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios16.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RemotevalSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import ARKit
+import CoreLocation
+import CoreMotion
+import Foundation
+import MediaPlayer
+import MetalKit
+import ModelIO
+import SceneKit.ModelIO
+import ObjectMapper
+import Reachability
+import RealityKit
+import SceneKit
+import Sentry
+import Swift
+import UIKit
+import Zip
+import _Concurrency
+import _StringProcessing
+import simd
+public typealias HTTPHeaders = [Swift.String : Swift.String]
+public enum HTTPTask {
+  case request
+  case requestParameters(bodyParameters: RemotevalSDK.Parameters?, bodyEncoding: RemotevalSDK.ParameterEncoding, urlParameters: RemotevalSDK.Parameters?)
+  case requestParametersAndHeaders(bodyParameters: RemotevalSDK.Parameters?, bodyEncoding: RemotevalSDK.ParameterEncoding, urlParameters: RemotevalSDK.Parameters?, additionHeaders: RemotevalSDK.HTTPHeaders?)
+}
+extension RemotevalSDK.RvVideoBaseScan {
+  @_Concurrency.MainActor(unsafe) public func createZip(forLidar: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func removeVideoFolderAndItsZipFile()
+  @_Concurrency.MainActor(unsafe) public func createDeviceInfoJSONFile()
+  @_Concurrency.MainActor(unsafe) public func writeString(toFile aString: Swift.String, fileName nameString: Swift.String?)
+  @_Concurrency.MainActor(unsafe) public func createFolderInDocuments(folderName: Swift.String)
+  @_Concurrency.MainActor(unsafe) public func writeToFile(fileUrl: Foundation.URL, strWrite: Swift.String)
+}
+extension Foundation.Date {
+  public func next(_ weekday: Foundation.Date.Weekday, direction: Foundation.Calendar.SearchDirection = .forward, considerToday: Swift.Bool = false) -> Foundation.Date
+  public enum Weekday : Swift.Int {
+    case sunday, monday, tuesday, wednesday, thursday, friday, saturday
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+public func printLog(_ items: Any...)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class RvVideoBaseScan : RemotevalSDK.BaseViewController {
+  @_Concurrency.MainActor(unsafe) public var jobOrderId: Swift.String
+  @_Concurrency.MainActor(unsafe) public var floorName: Swift.String
+  @_Concurrency.MainActor(unsafe) public var buttonBackgroundColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) public var buttonTextColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) public var callBackAfterZipCreate: ((_ zipPath: Swift.String?, _ zipName: Swift.String?, _ tplAutomaticFloorPlan: (Swift.Bool, [ARKit.ARMeshAnchor])?) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var selectedMeasurementOption: RemotevalSDK.getMeasurementOption
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didReceiveMemoryWarning()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) public func restartVideoScan()
+  @_Concurrency.MainActor(unsafe) public func checkStorageSpaceAvailable() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func showStorageFullAlert()
+  @_Concurrency.MainActor(unsafe) public func changeStackviewButton(show3DViewerButton: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func closeCurrentView(isScanAnotherFloor: Swift.Bool = false, isExit: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func showUploadAlertWithProgress(progInPercentage: Swift.Int, prog: Swift.Float)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public enum getMeasurementOption : Swift.String, Swift.Equatable {
+  case videoBaseScan
+  case objectToPLY
+  public func stringSet() -> Swift.String
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Insert3DViewer {
+  public var width: Swift.Int
+  public var height: Swift.Int
+  public var x: Swift.Int
+  public var y: Swift.Int
+  public var background: ObjectiveC.NSObject
+  public init()
+}
+public struct Insert3DModel {
+  public var mesh: Swift.String
+  public var material: Swift.String
+  public var autoRotate: Swift.Bool
+  public var rotationSpeed: Foundation.TimeInterval
+  public var fixed: Swift.Bool
+  public init()
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func Insert3D(viewerSetup: RemotevalSDK.Insert3DViewer, modelSetup: RemotevalSDK.Insert3DModel)
+}
+public typealias Parameters = ObjectMapper.Mappable
+public protocol ParameterEncoder {
+  func encode(urlRequest: inout Foundation.URLRequest, with parameters: RemotevalSDK.Parameters) throws
+}
+public enum ParameterEncoding {
+  case urlEncoding
+  case jsonEncoding
+  case urlAndJsonEncoding
+  case postURLEncoding
+  public func encode(urlRequest: inout Foundation.URLRequest, bodyParameters: RemotevalSDK.Parameters?, urlParameters: RemotevalSDK.Parameters?) throws
+  public static func == (a: RemotevalSDK.ParameterEncoding, b: RemotevalSDK.ParameterEncoding) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum NetworkError : Swift.String, Swift.Error {
+  case parametersNil
+  case encodingFailed
+  case missingURL
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class FloorscanRequest : ObjectMapper.BaseMappable, ObjectMapper.Mappable {
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+extension RemotevalSDK.RvVideoBaseScan : ARKit.ARCoachingOverlayViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func coachingOverlayViewWillActivate(_ coachingOverlayView: ARKit.ARCoachingOverlayView)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARKit.ARCoachingOverlayView)
+}
+@available(iOS 13.4, *)
+extension RemotevalSDK.RvVideoBaseScan : ARKit.ARSCNViewDelegate {
+  @available(iOS 13.4, *)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func renderer(_ renderer: SceneKit.SCNSceneRenderer, nodeFor anchor: ARKit.ARAnchor) -> SceneKit.SCNNode?
+  @available(iOS 13.4, *)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func renderer(_ renderer: SceneKit.SCNSceneRenderer, didUpdate node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func renderer(_ renderer: SceneKit.SCNSceneRenderer, didRemove node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
+}
+extension RemotevalSDK.RvVideoBaseScan {
+  @available(iOS 13.4, *)
+  @_Concurrency.MainActor(unsafe) public func startLidarScan()
+  @available(iOS 13.4, *)
+  @_Concurrency.MainActor(unsafe) public func finishLidarScan(isFromDT: Swift.Bool = false)
+}
+public struct OrderInfoRequest {
+  public init(ownerEmail: Swift.String, ownerName: Swift.String, ownerPhone: Swift.String, propertyAddress: Swift.String, propertyCity: Swift.String, propertyCountry: RemotevalSDK.RVCountry, propertyState: RemotevalSDK.RVState, latitude: Swift.String, longitude: Swift.String, propertyType: RemotevalSDK.PropertyType, propertyZip: Swift.String)
+  public var latitude: Swift.String?
+  public var longitude: Swift.String?
+  public var ownerEmail: Swift.String?
+  public var ownerName: Swift.String?
+  public var ownerPhone: Swift.String?
+  public var propertyAddress1: Swift.String?
+  public var propertyAddress2: Swift.String
+  public var propertyCity: Swift.String?
+  public var propertyCountry: RemotevalSDK.RVCountry?
+  public var propertyState: RemotevalSDK.RVState?
+  public var propertyType: RemotevalSDK.PropertyType?
+  public var propertyZip: Swift.String?
+}
+public enum PropertyType {
+  case RESIDENTIAL
+  case COMMERCIAL
+  public static func == (a: RemotevalSDK.PropertyType, b: RemotevalSDK.PropertyType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class BaseViewController : RemotevalSDK.ProgressBaseController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Swift.Error {
+  public var reason: Swift.String {
+    get
+  }
+}
+public enum RemotValSDKError : Foundation.LocalizedError {
+  case system(Swift.Error)
+  case withCode(code: Swift.Int, reason: Swift.String)
+  case custom(reason: Swift.String)
+  case type(error: RemotevalSDK.ErrorType)
+}
+public enum ErrorType : Swift.String {
+  case storaInfoNotNull
+  case invalidISD
+  case invalidAuth
+  case missingParam
+  case somethingWrong
+  case parsingError
+  case agreeTerm
+  case invalidEmail
+  case invalidPhone
+  case invalidOTP
+  case invalidFullName
+  case invalidFirstName
+  case enterFirstName
+  case enterLasttName
+  case invalidLastName
+  case invalidZipcode
+  case enterZipcode
+  case invalidAlis
+  case noFootprintFound
+  case addParticipantsToCreateHive
+  case enterHiveSubject
+  case noCountryCodeOnlyPhone
+  case inAppPurchaseFailure
+  case inAppRestoreFailure
+  case selectOptoutCollector
+  case usaCountryCodeNotAllowed
+  case invalidNickname
+  case enterNickname
+  case notReachable
+  case uuidIsMissing
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension RemotevalSDK.RvVideoBaseScan : CoreLocation.CLLocationManagerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateHeading newHeading: CoreLocation.CLHeading)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: Swift.Error)
+}
+@objc @_inheritsConvenienceInitializers public class BaseModel : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol CommonDelegate : AnyObject {
+  func connectionError(_ model: RemotevalSDK.BaseModel)
+  func startLoadingDelegate(_ model: RemotevalSDK.BaseModel)
+  func stopLoadingDelegate(_ model: RemotevalSDK.BaseModel)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class ProgressBaseController : UIKit.UIViewController, RemotevalSDK.CommonDelegate {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) public func connectionError(_ model: RemotevalSDK.BaseModel)
+  @_Concurrency.MainActor(unsafe) public func startLoadingDelegate(_ model: RemotevalSDK.BaseModel)
+  @_Concurrency.MainActor(unsafe) public func stopLoadingDelegate(_ model: RemotevalSDK.BaseModel)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UIColor {
+  convenience public init(hex: Swift.String)
+}
+extension UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public func MBFormatter(_ bytes: Swift.Int64) -> Swift.String
+  @_Concurrency.MainActor(unsafe) public var freeDiskSpaceInGB: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var freeDiskSpaceInBytes: Swift.Int64 {
+    get
+  }
+}
+public protocol AzureUploadServices {
+  func getBlobToken(queryParameters: Swift.String, authToken: Swift.String, completion: @escaping (Swift.Result<RemotevalSDK.AzureUploadResponse, RemotevalSDK.RemotValSDKError>) -> Swift.Void)
+  func getFloorscanResponse(tenantInfoToken: Swift.String, parameters: RemotevalSDK.FloorscanRequest?, completion: @escaping (Swift.Result<RemotevalSDK.FloorscanResponse, RemotevalSDK.RemotValSDKError>) -> Swift.Void)
+  func cancelRequest()
+}
+extension UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open func addShadow(offset: CoreFoundation.CGSize, color: UIKit.UIColor, radius: CoreFoundation.CGFloat, opacity: Swift.Float)
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var width: CoreFoundation.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var height: CoreFoundation.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var borderWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var borderColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+}
+extension Swift.Dictionary {
+  public func dict2json() -> Swift.String
+  public func toData() -> Foundation.Data?
+}
+extension Swift.String {
+  public func toTrim() -> Swift.String
+  public func toDictionary() -> [Swift.AnyHashable : Any]?
+  public func toVector() -> SceneKit.SCNVector3
+  public func toPoint() -> CoreFoundation.CGPoint
+}
+public class AzureUploadViewModel {
+  public init()
+  public func fetchBlobToken(joborderId: Swift.String, authToken: Swift.String, completionHandler: @escaping (_ error: RemotevalSDK.RemotValSDKError?) -> Swift.Void)
+  @objc deinit
+}
+extension RemotevalSDK.RvVideoBaseScan : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate, ARKit.ARSessionDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func session(_ session: ARKit.ARSession, didUpdate frame: ARKit.ARFrame)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func session(_ session: ARKit.ARSession, cameraDidChangeTrackingState camera: ARKit.ARCamera)
+  @_Concurrency.MainActor(unsafe) public func setDelayCallback(frame: ARKit.ARFrame)
+  @_Concurrency.MainActor(unsafe) public func processImage(_ pixelBuffer: CoreVideo.CVPixelBuffer?, timestamp msDate: Swift.Double, cameraMatrix camMat: simd.matrix_float3x3?, arFrame: ARKit.ARFrame)
+  @_Concurrency.MainActor(unsafe) public func getVideoWriterSettings(bitrate: Swift.Int, width: Swift.Int, height: Swift.Int) -> [Swift.String : Swift.AnyObject]
+  @_Concurrency.MainActor(unsafe) public func pauseElapsedTimer()
+  @_Concurrency.MainActor(unsafe) public func resumeElapsedTimer()
+  @_Concurrency.MainActor(unsafe) public func writeScannedAreaIntoFile()
+  @_Concurrency.MainActor(unsafe) public func toggleTorch(on: Swift.Bool, darkLvel: Swift.Float)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class VideoBaseScanMessageView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum Tilt {
+  case ceiling
+  case forward
+  case backward
+  case none
+  public static func == (a: RemotevalSDK.Tilt, b: RemotevalSDK.Tilt) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum DeviceOrientation {
+  case portrait
+  case portraitUpsideDown
+  case landscapeLeft
+  case landscapeRight
+  public static func == (a: RemotevalSDK.DeviceOrientation, b: RemotevalSDK.DeviceOrientation) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum CameraFeatures {
+  case insufficientFeatures
+  case normal
+  public static func == (a: RemotevalSDK.CameraFeatures, b: RemotevalSDK.CameraFeatures) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum VideoBaseScanMessageViewType : Swift.Equatable {
+  case deviceOrientation(rotateAt: RemotevalSDK.DeviceOrientation)
+  case tiltError(tiltAt: RemotevalSDK.Tilt)
+  case cameraFeatures(state: RemotevalSDK.CameraFeatures)
+  case movingTooFast
+  case roomIsTooDark
+  public func getImageAndMessage() -> (image: UIKit.UIImage?, title: Swift.String?, desc: Swift.String?, color: UIKit.UIColor?)
+  public static func == (lhs: RemotevalSDK.VideoBaseScanMessageViewType, rhs: RemotevalSDK.VideoBaseScanMessageViewType) -> Swift.Bool
+}
+public enum HTTPMethod : Swift.String {
+  case get
+  case post
+  case put
+  case delete
+  case patch
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum RemoteValEnvironmet : Swift.String {
+  case dev
+  case production
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct RVCountry {
+  public var name: Swift.String?
+  public var id: Swift.Int?
+}
+public struct RVState {
+  public var name: Swift.String?
+}
+@_hasMissingDesignatedInitializers public class AppFont {
+  @objc deinit
+}
+public typealias failureComplitionHandler = ((RemotevalSDK.RemotValSDKError) -> Swift.Void)
+@_hasMissingDesignatedInitializers public class RVConfigClass {
+  public static var shared: RemotevalSDK.RVConfigClass
+  public var arrFloorNames: [[Swift.String : Swift.String]]
+  public var arrWallTickness: [Swift.String]
+  public var arrFloorScanOptions: [RemotevalSDK.getMeasurementOption]
+  public var allCountries: [RemotevalSDK.RVCountry] {
+    get
+  }
+  public var allStates: [RemotevalSDK.RVState] {
+    get
+  }
+  public func testSetUpFunc(environment: RemotevalSDK.RemoteValEnvironmet, clientKey: Swift.String)
+  public func configSDK(environment: RemotevalSDK.RemoteValEnvironmet, clientKey: Swift.String, successHandler: @escaping (() -> Swift.Void), failureHandler: @escaping RemotevalSDK.failureComplitionHandler)
+  public func generateJobOrder(orderInfoRequest: RemotevalSDK.OrderInfoRequest, successHandler: @escaping ((_ resJobOrderId: Swift.String) -> Swift.Void), failureHandler: @escaping RemotevalSDK.failureComplitionHandler)
+  public func getUploadStorageDetail(jobOrderId: Swift.String, successHandler: @escaping ((_ storageInfo: ObjectMapper.Mappable) -> Swift.Void), failureHandler: @escaping RemotevalSDK.failureComplitionHandler)
+  public func uploadScan(filePath: Swift.String, fileName: Swift.String, storageInfo: ObjectMapper.Mappable, success: @escaping () -> Swift.Void, uploadComplition: @escaping (Swift.Float) -> Swift.Void, failureHandler: @escaping (Swift.Error) -> Swift.Void)
+  public func uploadFloorScanDetail(jobOrderId: Swift.String, floorIndex: Swift.Int, wallThickness: Swift.String, fileName: Swift.String, scanOption: RemotevalSDK.getMeasurementOption, successHandler: @escaping (() -> Swift.Void), failureHandler: @escaping RemotevalSDK.failureComplitionHandler)
+  public func applicationStateEnterInBackground(window: UIKit.UIWindow?)
+  public func applicationStateBecomeInActive(window: UIKit.UIWindow?)
+  @objc deinit
+}
+extension RemotevalSDK.RVConfigClass : RemotevalSDK.CommonDelegate {
+  public func connectionError(_ model: RemotevalSDK.BaseModel)
+  public func startLoadingDelegate(_ model: RemotevalSDK.BaseModel)
+  public func stopLoadingDelegate(_ model: RemotevalSDK.BaseModel)
+}
+public enum Country : Swift.String, Swift.CaseIterable {
+  case USA
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RemotevalSDK.Country]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RemotevalSDK.Country] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class AppColor {
+  @objc deinit
+}
+public class FloorscanResponse : ObjectMapper.BaseMappable, ObjectMapper.Mappable {
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class AzureUploadResponse : ObjectMapper.BaseMappable, ObjectMapper.Mappable {
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public struct JSONParameterEncoder : RemotevalSDK.ParameterEncoder {
+  public func encode(urlRequest: inout Foundation.URLRequest, with parameters: RemotevalSDK.Parameters) throws
+}
+extension Foundation.Date.Weekday : Swift.Equatable {}
+extension Foundation.Date.Weekday : Swift.Hashable {}
+extension Foundation.Date.Weekday : Swift.RawRepresentable {}
+extension RemotevalSDK.getMeasurementOption : Swift.Hashable {}
+extension RemotevalSDK.getMeasurementOption : Swift.RawRepresentable {}
+extension RemotevalSDK.ParameterEncoding : Swift.Equatable {}
+extension RemotevalSDK.ParameterEncoding : Swift.Hashable {}
+extension RemotevalSDK.NetworkError : Swift.Equatable {}
+extension RemotevalSDK.NetworkError : Swift.Hashable {}
+extension RemotevalSDK.NetworkError : Swift.RawRepresentable {}
+extension RemotevalSDK.PropertyType : Swift.Equatable {}
+extension RemotevalSDK.PropertyType : Swift.Hashable {}
+extension RemotevalSDK.ErrorType : Swift.Equatable {}
+extension RemotevalSDK.ErrorType : Swift.Hashable {}
+extension RemotevalSDK.ErrorType : Swift.RawRepresentable {}
+extension RemotevalSDK.Tilt : Swift.Equatable {}
+extension RemotevalSDK.Tilt : Swift.Hashable {}
+extension RemotevalSDK.DeviceOrientation : Swift.Equatable {}
+extension RemotevalSDK.DeviceOrientation : Swift.Hashable {}
+extension RemotevalSDK.CameraFeatures : Swift.Equatable {}
+extension RemotevalSDK.CameraFeatures : Swift.Hashable {}
+extension RemotevalSDK.HTTPMethod : Swift.Equatable {}
+extension RemotevalSDK.HTTPMethod : Swift.Hashable {}
+extension RemotevalSDK.HTTPMethod : Swift.RawRepresentable {}
+extension RemotevalSDK.RemoteValEnvironmet : Swift.Equatable {}
+extension RemotevalSDK.RemoteValEnvironmet : Swift.Hashable {}
+extension RemotevalSDK.RemoteValEnvironmet : Swift.RawRepresentable {}
+extension RemotevalSDK.Country : Swift.Equatable {}
+extension RemotevalSDK.Country : Swift.Hashable {}
+extension RemotevalSDK.Country : Swift.RawRepresentable {}
