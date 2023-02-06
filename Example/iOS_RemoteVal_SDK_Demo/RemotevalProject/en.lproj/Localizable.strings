@@ -1,0 +1,493 @@
+/* 
+  Localizable.strings
+  RemotvalSDK
+
+  Created by Akash Sheth on 22/11/22.
+  
+*/
+
+"Alert" = "Alert";
+"Cancel" = "Cancel";
+"Retry" = "Retry";
+"Failure" = "Failure";
+"Next" = "Next";
+"Join" = "Join";
+"Ok" = "Ok";
+"Yes" = "Yes";
+"No" = "No";
+"Okay" = "Okay";
+"Exit_Room" = "Exit Room";
+"Publish" = "Publish";
+"Rotate_Floor" = "Rotate Floor";
+"Ground_Floor" = "Ground Floor";
+"Floor_Plan" = "Floor Plan";
+"Details" = "Details";
+"Duplicate" = "Duplicate";
+"Delete" = "Delete";
+"Floor_Name" = "Floor Name";
+"Area_Name" = "Area Name";
+"Total_Corners" = "Total Corners";
+"Area_Type" = "Area Type";
+"Leave" = "Leave";
+"Try_Again" = "Try Again";
+"Exit" = "Exit";
+"Send" = "Send";
+"Clear_All" = "Clear All";
+"REC" = "REC";
+"true" = "true";
+"false" = "false";
+"Dismiss" = "Dismiss";
+"Settings" = "Settings";
+
+"Capture_Image" = "Capture Image";
+"Flash_On" = "Flash On";
+"Flash_Off" = "Flash Off";
+"Attach_Document" = "Attach Document";
+"Need_Permission" = "Need Permission";
+"Call_Setting" = "Call Settings";
+"Screen_Share" = "Screen Share";
+"Unable_to_access_camera._Please_enable_camera_from_device_settings" = "Allow %@ to access your camera from the device menu: “Setting” - “Privacy” - “Camera” and then Please reconnect the call using the call link.";
+
+"Unable_to_access_microphone._Please_enable_microphone_from_device_settings" = "Unable to access microphone. Please enable microphone from device settings";
+"Stop_Screen_Share" = "Stop Screen Share";
+"Start_Measurement" = "Start Measurement";
+"Network_Error" = "Network Error";
+"Capturing..." = "Capturing...";
+"Network_Connection_is_Not_Available" = "Network Connection is Not Available";
+"Please_check_your_internet_connection!" = "Please check your internet connection!";
+"Something_is_wrong." = "Unexpected Errors Occurred. Try Again Later.";
+"Participant_Limit_Reached" = "Limit of Participants Has Been Reached";
+"There_Can_Be_Maximum_of_4_Participants." = "There Can Be Maximum of 4 Participants.";
+"Thank_you_for_connecting_with_us!" = "Thank you for connecting with us!";
+"Thank_you_for_connecting_with_us_and_restart" = "Thank you for connecting with us! \n\nYour session is ended You can close the application.";
+
+"Share_your_screen" = "Share your screen";
+"This_will_stop_your_video._Do_you_want_to_continue?" = "This will stop your video. Do you want to continue?";
+"Connecting..." = "Connecting...";
+"Image_Selection" = "File Selection";
+
+"Photo_Album" = "Photo Album";
+"Document" = "Document";
+"File_size_should_be_less_then_10MB" = "File Size Exceeds 10MB";
+"(You)" = "(You)";
+"Type_a_message" = "Type a message";
+"Unsaved_changes_will_be_discarded_if_you_won’t_publish_data_to_the_server._Do_you_want_to_exit?" = "Unsaved Changes Will be Discarded. Exit Anyway?";
+"Good_Job_Are_you_sure_want_to_publish_data_on_the_server?" = "Are you sure want to publish data on the server?";
+"Good_Job" = "Good Job";
+"Measurement_Data_Uploaded_Successfully" = "Measurement Data Uploaded Successfully";
+"RE-CONNECT" = "RE-CONNECT";
+"OnSite_Device_Screen_is_Being_Shared" = "Now Sharing Your Screen.";
+"enter_text_here" = "enter_text_here";
+"Done" = "Done";
+"X" = "X";
+"1X" = "1X";
+"2X" = "2X";
+"3X" = "3X";
+"You" = "You";
+"Use_your_phone_to_capture_your_surroundings" = "Use your phone to capture your surroundings";
+"Start_Scan" = "Start Scan";
+"360_Measurement" = "360 Measurement";
+"Non-GLA" = "Non - GLA";
+"First_Floor" = "First Floor";
+"Second_Floor" = "Second Floor";
+"Third_Floor" = "Third Floor";
+"Select_Floor" = "Select Floor";
+"Please_Enter_Scan_Area" = "Enter Label for Your Scan Area";
+"Enter_Your_Scan_Area" = "Select Your Scan Area";
+"Select_Type" = "Select Type";
+"Enter_Area_Name" = "Enter Area Name";
+"File_successfully_uploaded" = "File successfully uploaded";
+"room_add_window" = "Add Window";
+"room_remove_window" = "Remove Window";
+"room_add_door" = "Add Door";
+"room_remove_door" = "Remove Door";
+"Welcome" = "Welcome";
+
+"Email" = "Email";
+"Password" = "Password";
+
+"EULA" = "EULA";
+"Confirm" = "Confirm";
+"Home" = "Home";
+"Finish" = "Finish";
+
+"Version" = "Version";
+"Submit" = "Submit";
+
+"Project" = "Project";
+"Project_Name" = "Project Name";
+"Property_Address" = "Property Address";
+
+"Save" = "Save";
+"Close" = "Close";
+
+"Video_Tutorial" = "Video Tutorial";
+"general.label.skip" = "Skip";
+
+
+"Project_List" = "Project List";
+"back_camera" = "Back Camera";
+"front_camera" = "Front Camera";
+
+"camera_blocked" = "Camera Blocked";
+
+"Allow_access_to_your_Camera_Click_the_padlock_to_the_address_bar" = "Allow access to your Camera. Click the padlock to the address bar.";
+"N/A" = "N/A";
+"Play_Test_Sound" = "Play Test Sound";
+"Total_Area"="Total Area";
+"Total_GLA"="Total GLA";
+"Total_Non_GLA"="Total Non-GLA";
+
+"You_have_already_published_floor_plan_would_you_like_to_edit_it" = "You have already published floor plan, would you like to edit it?";
+"Edit_Floor_Plan" = "Edit Floor Plan";
+"Interior_Wall_Thickness" = "Interior Wall Thickness";
+"Exterior_Wall_Thickness" = "Exterior Wall Thickness";
+"Measures" = "Measures";
+"You_must_enter_an_integer_value_between_0_and_31" = "You must enter an integer value between 0 and 31\"";
+"There_is_some_issue_in_json_conversion_Please_contact_administrator_or_ReScan" = "There is some issue in json conversion, Please contact administrator or Re-Scan.";
+"Summary" = "Summary";
+"Surface" = "Surface";
+"New" = "New";
+"Resume" = "Resume";
+"Edit" = "Edit";
+"Continue" = "Continue";
+"Discard_existing_floor_plan" = "Discard existing floor plan";
+"Starting_new_measurement" = "Starting a new measurement will discard unsaved changes or already scanned floor plan, Would you like to Continue? If you don't want to discard the changes then start measurement with Edit option";
+//Do not change any string to any language from below to next comment
+"Kitchen" = "Kitchen";
+"Dining_Room" = "Dining";
+"Living_Room" = "Living Room";
+"Hall" = "Hall";
+"Master_Bedroom" = "Master Bedroom";
+"Bedroom" = "Bedroom";
+"Bathroom" = "Bath";
+"Closet" = "Closet";
+"Study" = "Study";
+"Music_Room" = "Music Room";
+"Balcony" = "Balcony";
+"Garage" = "Garage";
+"Hallway" = "Hallway";
+"Laundry_Room" = "Laundry Room";
+"Playroom" = "Playroom";
+"Cellar" = "Cellar";
+"Den" = "Den";
+"WorkShop" = "WorkShop";
+"Stairway" = "Stairway";
+"Furnace_Room" = "Furnace Room";
+"Toilet" = "Toilet";
+"Vestibule" = "Vestibule";
+"Deck" = "Deck";
+"Patio" = "Patio";
+"Porch" = "Porch";
+"Outbuilding" = "Outbuilding";
+"Unfinished_Basement" = "Unfinished Basement";
+"Master_Bathroom" = "Master Bathroom";
+"Attic_Loft" = "Attic / Loft";
+"Other" = "Other";
+//Do not change it in any language
+"Statistics" = "Statistics";
+"Floors" = "Floors";
+"Rooms" = "Rooms";
+"Doors" = "Doors";
+"Windows" = "Windows";
+"Ceiling_Height" = "Ceiling Height";
+"Want_to_watch_a_video_tutorial" = "Want to watch a video tutorial?";
+"Room_Name" = "Room Name";
+"Select_Area_Type" = "Select Area Type";
+"Please_Enter_Area_Name" = "Please Enter Area Name";
+
+"msg.ar_view.point_camera_to_set_height" = "Point your camera up and tap on the screen to set the height";
+"general.label.height" = "Height";
+"iPhone" = "iPhone";
+
+//AR Guide messages
+"ar_guide.msg.adding_corner_auto" = "Adding corner automatically";
+"ar_guide.msg.corner_added" = "Corner added";
+"ar_guide.msg.door_added" = "Door added";
+"ar_guide.msg.auto_corner_disabled" = "Auto corner detection disabled\nTap to add corner";
+"ar_guide.msg.auto_corner_enabled" = "Auto corner detection enabled";
+"ar_guide.msg.keep_door_near_to_line" = "Keep door near to bottom measurement line";
+"ar_guide.msg.you_can_set_door" = "You can add the door";
+"ar_guide.msg.floor_is_not_focused" = "Keep the floor in camera focus in order to detect and set corners properly";
+"ar_guide.msg.point_pipe_to_corner" = "Point green pipe to a corner properly and tap on the screen to add it manually if not added automatically";
+"ar_guide.msg.keep_camera_in_front_of_fecning" = "Keep camera in front of measurement lines in order to detect door";
+"ar_guide.msg.door_detection_guide" = "Keep focusing camera in front of the door";
+"ar_guide.msg.door_alreay_exist" = "Door already added at this place";
+"Update" = "Update";
+"Exit_Project" = "Exit Project";
+"ar_guide.msg.ready_to_go" = "Ready to go!";
+"ar_guide.msg.go_near_to_corner" = "Go near to corner in order to get accurate measurement";
+"ar_guide.msg.go_far_from_corner" = "You are too close, Keep some distance";
+"arview_label.set_height" = "Capture Height";
+"arview_label.get_floor_plan" = "Show Floor Plan";
+"ar_guide.msg.tap_to_finish_height" = "Tap anywhere once you finish height measurement";
+"arview.label.meet_corner"= "Finish Sketch";
+"label.ar_measure.finish_measurement" = "Finish Measurement";
+"label.capture_door" = "Capture Door";
+"ar_guide.msg.door_not_detected" = "Could not detect a door, Focus on the door and try again";
+"ar_guide.msg.keep_moving_camera_for_ceiling" = "Keep moving camera to scan more ceiling area";
+
+"Floor_List" = "Choose Floor";
+"discardModifications"= "Are you sure you want to discard your modifications?";
+"Discard" = "Discard";
+"Keep_Editing" = "Keep Editing";
+"No_Record_Found" = "No Record Found";
+
+
+"JobId" = "Job Order ID";
+"Name" = "Name";
+"MobileNo" = "Mobile No";
+"Floor" = "Floor";
+"Ceiling" = "Ceiling";
+
+"selectMeasurement" = "Select measurement method";
+"PleaseWait" = "(Please, wait a few seconds...)";
+"TapOnRoom" = "Double tap on the + icon to Edit the room and apply Auto Adjust.";
+"RemindMeLater" = "Remind Me Later";
+"SkipThisVer" = "Skip This Version";
+"DownloadNow" = "Update Now";
+"ApplicationUpdate" = "Application update required";
+
+"Reset" = "Reset";
+"not_recognised" = "Not recognised";
+"power_by" = "Powered by";
+"somethingWentWrong" = "Something went wrong, Please try again.";
+"uploadImg" = "Uploading Image";
+"attchDoc" = "Attach Document";
+"invalidShape" = "In order to get area, There must be any shape or coordinates more than 3";
+"lowLight" = "It is too dark\nTurn on the lights";
+"tooCloseSurface" = "Surface too close\nStand up while aiming at the floor";
+"aimAtFeet" = "Aim at your feet";
+"aimAtCeil" = "Aim at ceiling";
+"moveAroundCeil" = "Keep moving camera around ceiling surface";
+"ft" = "ft";
+"in" = "in";
+"issueConvertPoint" = "Issue while converting array into JSON: 2D Coordinate API.";
+"emptyCoordinate" = "Empty 2D Coordinate from API.";
+"captureDoor" = "Capture Door";
+"continueScan" = "Continue Scan";
+"areYouSure" = "Are you sure?";
+"sq ft" = "sq ft";
+"m2" = "m2";
+"Floor" = "Floor";
+"Room" = "Room";
+"3rd_Basement" = "3rd Basement";
+"2nd_Basement" = "2nd Basement";
+"Basement" = "Basement";
+"Ground_Floor" = "Ground Floor";
+"1st_Floor" = "1st Floor";
+"2nd_Floor" = "2nd Floor";
+"3rd_Floor" = "3rd Floor";
+"4th_Floor" = "4th Floor";
+"5th_Floor" = "5th Floor";
+"6th_Floor" = "6th Floor";
+"7th_Floor" = "7th Floor";
+"8th_Floor" = "8th Floor";
+"9th_Floor" = "9th Floor";
+"10th_Floor" = "10th Floor";
+"11th_Floor" = "11th Floor";
+"12th_Floor" = "12th Floor";
+"13th_Floor" = "13th Floor";
+"14th_Floor" = "14th Floor";
+"15th_Floor" = "15th Floor";
+"16th_Floor" = "16th Floor";
+"17th_Floor" = "17th Floor";
+"18th_Floor" = "18th Floor";
+"19th_Floor" = "19th Floor";
+"20th_Floor" = "20th Floor";
+"21st_Floor" = "21st Floor";
+"22nd_Floor" = "22nd Floor";
+"23rd_Floor" = "23rd Floor";
+"24th_Floor" = "24th Floor";
+"25th_Floor" = "25th Floor";
+"26th_Floor" = "26th Floor";
+"27th_Floor" = "27th Floor";
+"28th_Floor" = "28th Floor";
+"29th_Floor" = "29th Floor";
+"30th_Floor" = "30th Floor";
+"31st_Floor" = "31st Floor";
+"32nd_Floor" = "32nd Floor";
+"33rd_Floor" = "33rd Floor";
+"34th_Floor" = "34th Floor";
+"35th_Floor" = "35th Floor";
+"36th_Floor" = "36th Floor";
+"37th_Floor" = "37th Floor";
+"38th_Floor" = "38th Floor";
+"39th_Floor" = "39th Floor";
+"40th_Floor" = "40th Floor";
+"41st_Floor" = "41st Floor";
+"42nd_Floor" = "42nd Floor";
+"43rd_Floor" = "43rd Floor";
+"44th_Floor" = "44th Floor";
+"45th_Floor" = "45th Floor";
+"46th_Floor" = "46th Floor";
+"47th_Floor" = "47th Floor";
+"48th_Floor" = "48th Floor";
+"49th_Floor" = "49th Floor";
+"50th_Floor" = "50th Floor";
+"Roof" = "Roof";
+
+"select_language" = "Select Language";
+
+
+"Invalid job order id." = "Invalid job order id.";
+"Invalid callUuid." = "Invalid callUuid.";
+"Invalid inviteUuid." = "Invalid inviteUuid.";
+"Invite link has been expired." = "Invite link has been expired.";
+"Error in generate token api." = "Error in generate token api.";
+"File extension not supported." = "File extension not supported.";
+"Error in json parsing" = "Error in json parsing";
+"Measurement link has been expired" = "Measurement link has been expired";
+"Invalid MeasurementLinkId" = "Invalid MeasurementLinkId";
+"Application update required" = "Application update required";
+"Please update the app version for better user experience." = "Please update the app version for better user experience.";
+"Please update the app to continue" = "Please update the app to continue";
+"Please enter valid values" = "Please enter valid values";
+"unable_to_complete_request" = "Unable to complete your request";
+"Participant count reached the limit." = "Participant count reached the limit.";
+"Url token invalid" = "Url token invalid";
+"Url has expired, please request new url" = "Url has expired, please request new url";
+"sessionExpired" = "Already one session with one property owner is going on so this session is to be considered as expired";
+
+"switchCamera" = "Switch Camera View";
+"switchCameraFrontDesc" = "Appraiser is requesting to switch to your front camera view.\nPlease click \"OK\" to allow it.";
+"switchCameraRearDesc" = "Appraiser is requesting to switch to your rear camera view.\nPlease click \"OK\" to allow it.";
+"ar_view.label.height_is" = "Height is";
+"alert.button.wall" = "Wall";
+"msg.ar_view.point_camera_to_center" = "Position the green bar at shoulder or face height on the wall";
+"captureImageLabel" = "Capture Labeled Images";
+
+"networkQualityPopupTitle" = "Slow Internet Connection Detected";
+"networkQualityPopupDesc" = "Video or Images may lag or experience latency due to the slow connection.";
+"incompatibleDevice" = "Recommended Device";
+"incompatibleDeviceDesc" = "To get a better user experience and accuracy, It is recommended to use the iPhone XR or higher-end devices.";
+"location" = "Location";
+"date" = "Date";
+"notShared" = "Not Shared";
+
+"alert.button.wall" = "Wall";
+"msg.ar_view.point_camera_to_center" = "Position the green bar at shoulder or face height on the wall";
+
+"addNewLabel" = "Add New Label: %@";
+
+"welcomeTo" = "Welcome to ";
+"questionCencerns" = "If you have any questions, concerns, or feedback, please feel free to reach out to us by clicking here.";
+"clickingHere" = "clicking here.";
+
+
+"reportTitle" = "Error";
+"reportDesc" = "Oops, something went wrong. Please try again after sometimes or report an issue to our support.";
+"contactUs" = "Contact Us";
+
+"floorWithCorners" = "Floor Perimeter";
+"floorWithRectagle" = "Floor Cross-Room Measurement";
+"centerNormal" = "Mid-Wall Perimeter (LIDAR)";
+"centerWithRectanlge" = "Mid-Wall Cross-Room Measurement (LIDAR)";
+"ceilingWithRectangle" = "Ceiling Cross-Room Measurement (LIDAR)";
+"ceilingNormal" = "Ceiling Perimeter (LIDAR)";
+
+
+"callSettingPopupTitle" = "Instruction for Call Settings";
+"callSettingPopupDesc1" = "Speaker, Mic & Camera can be tested via call settings from the \"more\" menu";
+"callSettingPopupDesc2" = "\n\nTo Check the call settings now click on the below button.";
+
+"errorRectangleCorner" = "Could not create rectangle from the placed corners. Dashed lines must be parallel or intersect each other in order to create rectangle shape.";
+
+"msg.ar_view.focus_plane_wall" = "Focus camera on plain wall";
+"msg.participant_not_found" = "The requested pin participant is not available. Try again";
+"msg.participant_local_datatrack_failed" = "Unable to establish a communication channel with the Appraiser, Please disconnect the call and reconnect.";
+
+
+"videoHasBeenRecorded" = "The Video is being recorded.";
+"videoHasBeenRecordedDesc" = "It is required to generate a floor plan.";
+"allow" = "Allow";
+"deny" = "Deny";
+
+"beforeYouStart" = "Before You Start";
+"readQuickGuide" = "Read the Quick Guide for Scanning";
+"iUnderstand" = "I Understand";
+"intro1" = "Keep the focus on the floor and scan the wall/furniture from 5-7 feet away.";
+"intro2" = "Avoid fast movements";
+"intro3" = "Do not scan ceilings";
+"intro4" = "Do not move while scanning windows / fixed furniture";
+"intro5" = "Avoid scanning the same area multiple times";
+
+"endScanConfirmation" = "Are you sure you want to finish the current scanning & upload the files for the floor plan?";
+"scanningEnvReady" = "The scanning Environment is getting ready, Please Start Video Scanning Again";
+"minimumVideoLength" = "Minimum 30 sec of video scanning is required to End Scanning & Process the Floor Plan.";
+"cancelConfirmation" = "Are you sure you want to cancel the scanning & go back?";
+
+
+"orientationError" = "Turn your device left to landscape orientation";
+"ceilingError" = "Do not scan ceilings";
+"ceilingDescError" = "We can lose track of your position if ceilings are scanned";
+"tooCloseError" = "Tilt the device forward a bit";
+"tooFarError" = "Tilt the device back a bit";
+
+
+"tooFastError" = "You are turning too fast";
+"tooFastDescError" = "Avoid fast turns for best scanning results";
+"rotate180" = "Rotate your device 180°\nMake sure the start scanning button is on the right";
+"scanAnotherFloor" = "Scan Another Floor";
+"processingScan" = "Processing scan";
+"doNotExitApp" = "Please do not exit the application and don't go in the background.";
+"processingScanError" = "Error in processing scan";
+"processingScanFail" = "Fail to process scanned video";
+"compressionFail" = "Compression failed";
+"uploadingFile" = "Uploading files";
+"uploadingFailed" = "Files uploading failed,Please try again.";
+"videoUploadFailed" = "Video uploading failed";
+"success" = "Success";
+"fileUploadSuccess" = "Files uploaded successfully and Floor plan is being processed.";
+"cancelUpload" = "Cancel Upload";
+"cancelUploadConfirm" = "Are you sure you want to cancel this upload?";
+"yesAndCancel" = "Yes, cancel";
+"noAndContinue" = "No, continue";
+"startScanning" = "Start Scanning";
+"finishScanning" = "Finish Scanning";
+"endAndPublish" = "End & Publish";
+"preparing" = "Preparing...";
+"processingVideo" = "Processing video...";
+"roomIsTooDark" = "It is too dark, Turn on the Lights";
+"progress" = "Progress";
+"landscapeTilt" = "Please turn your device in landscape mode to start the video scanning.";
+"notEnoughFeatures" = "We have trouble tracking your position\nbecause there are not enough visual features here";
+
+
+
+//Put this string in all localise file
+"scanningFailed" = "Scanning Failed";
+"scanningError" = "Error in starting the scan, Please try again";
+"scanAborted" = "Scan Aborted";
+"scanAbortedDesc" = "The scan was aborted because the app was backgrounded. Please scan the entire floor again.";
+"accelerometerError" = "There is a problem in accelerometer sensor, user guide will not work as expected";
+"scanAbortedStorage" = "The scan was aborted as your phone is running out of required storage space for video-based scanning.\n\nTo do video-based scanning please consider deleting content you no longer need & try again.\nOr Get the inspection done with corner-based scanning by just tapping on the corners.";
+
+"addRoom" = "Add Room/Area";
+"enterRoomName" = "Enter Room/Area Name";
+"start" = "Start";
+"pleaseEnterRoomName" = "Please Enter Room/Area Name";
+
+
+"measurementAborted" = "Inspection Stopped";
+"measurementAbortedDesc" = "Inspection Stopped Inspection process stopped due to Screen Share having been aborted. Kindly Press Return to call and request the appraiser to start the measurement process again.";
+"returnToCall" = "Return to Call";
+
+"storageFull" = "Your device can only store another 0 minutes of scan data, this may not be enough to complete this scan.\n\nAre you sure you want to start scanning?";
+"cameraOffPinView" = "The camera view can't be turned off while it is in the pin view. To turn off the camera, kindly exit from the inspection process or from the pin view.";
+"scanType" = "Select Scanning Type";
+"videoBase" = "Video Based";
+"cornerBase" = "Corner Based";
+"captureMeasurement" = "Capture Measurement";
+"selectWallTickness" = "Select Wall Thickness (inch)";
+"killAppAndRestartAgain" = "Kindly kill the app & open the app from the link again with a stable Internet connection.";
+"communicationChannelAppraiser" = "Establishing a communication channel with the Appraiser. Please retry in a few seconds or exit and return to scanning.";
+"callInProgress" = "Your call is in progress";
+"cameraOffDuringUploadDesc" = "The camera is turned off during the scan upload. Once it is completed, click \"Scan Another Floor\" to resume the video capture.";
+"reuploadScanVideo" = "Previously scanned data is available, Do you want to upload and continue?";
+"upload" = "Upload";
+"floorScanTechnique" = "Floor Scan Technique";
+"manualFloorPlan" = "Manual Floor plan";
+"automaticFloorPlan" = "Automatic Floor Plan";
+"memorylimitexceeded" = "Memory limit exceeded";
+"memoryLimitReachedMessage" = "Your scan is stopped automatically, Click on okay to upload the scanned area.";

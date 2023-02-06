@@ -1,0 +1,14 @@
+//
+//  Development.xcconfig
+//  RemotvalSDK
+//
+//  Created by Akash Sheth on 19/12/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+
+BACKEND_URL = dev-api.remoteval.net/api/v1/
+AUTH_MASTERAPI_URL = dev-master.remoteval.net/api/v1/

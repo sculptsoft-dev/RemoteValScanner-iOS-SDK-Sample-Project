@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-RemotevalProject/Pods-RemotevalProject-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework
+${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework
+${BUILT_PRODUCTS_DIR}/SentryPrivate/SentryPrivate.framework
+${BUILT_PRODUCTS_DIR}/Zip/Zip.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/SSRemoteValSDK/RemotevalSDK.framework/RemotevalSDK

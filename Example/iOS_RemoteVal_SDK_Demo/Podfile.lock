@@ -1,0 +1,39 @@
+PODS:
+  - ObjectMapper (4.2.0)
+  - Reachability (3.2)
+  - Sentry (8.1.0):
+    - Sentry/Core (= 8.1.0)
+    - SentryPrivate (= 8.1.0)
+  - Sentry/Core (8.1.0):
+    - SentryPrivate (= 8.1.0)
+  - SentryPrivate (8.1.0)
+  - SSRemoteValSDK (1.0.0):
+    - ObjectMapper
+    - Reachability
+    - Sentry
+    - Zip
+  - Zip (2.1.2)
+
+DEPENDENCIES:
+  - SSRemoteValSDK
+
+SPEC REPOS:
+  trunk:
+    - ObjectMapper
+    - Reachability
+    - Sentry
+    - SentryPrivate
+    - SSRemoteValSDK
+    - Zip
+
+SPEC CHECKSUMS:
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Sentry: a73976b9f5a5141187b0c15432425a167c90d80f
+  SentryPrivate: eb7ce6ea7ccf1bbeda1f3f37fa355668849426ae
+  SSRemoteValSDK: 6054754f16d12420da27669464515e83add401f1
+  Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
+
+PODFILE CHECKSUM: 2d674a7d7c3d6d4f92cbc2e1974ef72af250f078
+
+COCOAPODS: 1.11.3
