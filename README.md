@@ -6,7 +6,7 @@
 * [RemoteVal Demo](#remoteval-demo)
 * [Video-based scan library module](#video-based-scan-library-module)
 * [Implementation](#implementation)
-    * [Insallation](#installation)
+    * [Installation](#installation)
     * [Setting up](#setting-up)
     * [Device Orientation Setup](#device-orientation-setup)
 * [RemoteVal SDK Features](#remoteval-sdk-features)
@@ -39,7 +39,6 @@ This implementation was made with Xcode.
 The preferred (and easiest) way to install the Remoteval SDK is with cocoa pods. Add the following to your `Podfile`:
 
 ```swift
-pod 'SSRemoteValSDK'	
 ```
 
 ### Setting up
@@ -83,21 +82,6 @@ For a better user experience add these two methods in your Appdelegate.swift fil
 
 ```
 
-### Background process handle
-- Use of this methods is you can restart scanning when application gone in background state in between of scanning.
-- Put these methods in `AppDelegate.swift` file.
-
-```swift
-func applicationDidEnterBackground(_ application: UIApplication) {
-    RVConfigClass.shared.applicationStateEnterInBackground(window: self.window)
-}
-    
-func applicationDidBecomeActive(_ application: UIApplication) {
-    RVConfigClass.shared.applicationStateBecomeInActive(window: self.window)
-}
-```
-- You have to pass window in param.
-
 ## Remoteval SDK Features
 
 ### Adaptive Lighting
@@ -126,7 +110,10 @@ RemoteVal SDK uses the device camera to capture the surroundings so you need to 
 
 ## Configuration
 
-1. You need to set `Development Environment and Provide Your Client Key` using this function and put this in viewDidLoad()
+1. Setup Back End using RemoteVal Back End Documentation
+
+
+2. You need to set `Development Environment and Provide Your Client Key` using configSDK function and put this code in viewDidLoad()
 
 ```swift
 
@@ -138,10 +125,10 @@ RVConfigClass.shared.configSDK(environment: RemoteValEnvironmet.dev, clientKey: 
 
 ```
 
-- here you have to pass Environment Development from the `RemoteValEnvironment` type
-- the second you have to pass `Your_Client_key`
+- In argument first you have to pass Development Environment  which is `RemoteValEnvironment` type.
+- The second you have to pass `Your_Client_key`.
 
-2. The way to use `RvVideoBaseScan` as a `UIViewController`
+3. The way to use `RvVideoBaseScan` as a `UIViewController`
 
 ```swift
 import RemotevalSDK
@@ -157,54 +144,19 @@ jobOrderId and floorName require because of creating a Zip file and you get file
 
 ## Uploading Part
 
-To take input from users regarding the job order you've to create UIViewController. This will be the launcher View controller for your previous push controller.
+To take input from users regarding the job order you've to create a form
 
 ## For uploading a video follow these steps.
 
 1. Generate Job Order
 
-When you call `generateJobOrder()` function you get jobOrderId.
-`jobOrderId` use to upload capture video and create floor scan
-
-```swift
-//Create OrderInformation by filling below values
-let param = OrderInfoRequest(ownerEmail: "", 
-                             ownerName: "", 
-                             ownerPhone: "", 
-                             propertyAddress: "", 
-                             propertyCity: "", 
-                             propertyCountry: RVCountry, 
-                             propertyState: RVState, 
-                             latitude: "", 
-                             lontitude: "", 
-                             propertyType: PropertyType.RESIDENTIAL OR PropertyType.COMMERCIAL, 
-                             propertyZip: "" )
-        
-        
-RVConfigClass.shared.generateJobOrder(orderInfoRequest: param) { id in
-   //id equals to jobOrderID
-}
-```
-
-- Here you have to pass countryModel and StateModel in `propertyCountry` and `propertyState` parameters.
-- The way to use RVCountry and RVState 
-
-```swift
-
-//For Country
-RVConfigClass.shared.allCountries
-
-//For State
-RVConfigClass.shared.allStates
-
-```
-
-- In Property you have to pass `PropertyType` type pf value , you can access it by using `PropertyType` itself.
+From RemoteVal Third Party Integration document get reference to integrate api for Create JobOrderId.
 
 
 2. Zip Creation and get the file name and file path 
 
-After Scanning completion, you get `filePath` and `fileName` with the use of this callback.
+After scanning completion, you get `filePath` and `fileName` with the use of callBackAfterZipCreate callback.
+Using RvVideoBaseScan() object access callBackAfterZipCreate callback.
 fileName and filePath are required to upload files to the server.
 
 ```swift
@@ -217,7 +169,7 @@ videoBaseScanVC.callBackAfterZipCreate = { (filePath, fileName) in
 
 3. After Getting jobOrderId you have to call the function to get the upload path.
 
-To get the path you have to pass jobOrderId in the param and call this function 
+To get the upload path you have to pass jobOrderId in the param and call getUploadStorageDetail function 
 
 ```swift 
 
@@ -230,7 +182,7 @@ RVConfigClass.shared.getUploadStorageDetail(jobOrderId: job_Order_Id) { storageI
 ```
  
 
-4. Upload Scanned file: Once you get filepath call this function to upload the file to the server
+4. Upload Scanned file: Once you get filepath call uploadScan function to upload the file to the server
 
 - You have to pass filePath and fileName here, which you get from the callback of videoBaseScan class `callBackAfterZipCreate`.
 - You have to pass storageInfo, you get from on success of `getUploadStorageDetail` function.
@@ -248,7 +200,7 @@ RVConfigClass.shared.uploadScan(filePath: filePath, fileName: fileName, storageI
 ```
 
 
-5. Create Floor Scan: After successfully uploading the Scanned Zip file you've to create a floor scan using
+5. Create Floor Scan: After successfully uploading the Scanned Zip file you've to upload a floor scan using uploadFloorScanDetail function.
 
 Here you have to pass jobOrderId which you get from the generateJobOrder function.
 The second param passes floorIndex as an Integer datatype.
@@ -270,6 +222,14 @@ RVConfigClass.shared.uploadFloorScanDetail(jobOrderId: jobOrderId,
 }
    
 ```
+
+6. After Upload floor scan Technician will create Floor plan and they complete job inspection.
+On Complete Job inspection RemoteVal Back end will notify the respective Back End using Webhook url.
+
+7. After getting notification respective backend want to call api for floor plan report
+Get the information for api integration from a given doc url (third party integration url) .
+From this doc have to call Download job Order pdf report (Approach 2 ) for floor plan
+
 
 ## Custom Localization
 
