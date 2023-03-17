@@ -9,6 +9,7 @@
     * [Installation](#installation)
     * [Setting up](#setting-up)
     * [Device Orientation Setup](#device-orientation-setup)
+    * [Background Process Handle](#background-process-handle)
 * [RemoteVal SDK Features](#remoteval-sdk-features)
     * [Adaptive Lighting](#adaptive-lighting)
     * [Storage Warning](#storage-warning)
@@ -63,27 +64,27 @@ func application(_ application: UIApplication, supportedInterfaceOrientationsFor
 For a better user experience add these two methods in your Appdelegate.swift file
 
 ```swift 
-    static func rotateToLandscapeRightDevice() {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.orientationLock = .landscapeRight
-            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
-            UIView.setAnimationsEnabled(false)
-            UINavigationController.attemptRotationToDeviceOrientation()
-        }
+static func rotateToLandscapeRightDevice() {
+   if let delegate = UIApplication.shared.delegate as? AppDelegate {
+	delegate.orientationLock = .landscapeRight
+	UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+	UIView.setAnimationsEnabled(false)
+	UINavigationController.attemptRotationToDeviceOrientation()
     }
+}
     
-    static func rotateToPotraitDevice() {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.orientationLock = .portrait
-            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-            UIView.setAnimationsEnabled(false)
-            UINavigationController.attemptRotationToDeviceOrientation()
-        }
+static func rotateToPotraitDevice() {
+   if let delegate = UIApplication.shared.delegate as? AppDelegate {
+	delegate.orientationLock = .portrait
+	UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+	UIView.setAnimationsEnabled(false)
+	UINavigationController.attemptRotationToDeviceOrientation()
     }
+}
 
 ```
 
-### Background process handle
+### Background Process Handle
 - Use of this methods is you can restart scanning when application gone in background state in between of scanning.
 - Put these methods in `AppDelegate.swift` file.
 
@@ -129,8 +130,9 @@ RemoteVal SDK uses the device camera to capture the surroundings so you need to 
 
 1. Setup Back End using RemoteVal Back End Documentation
 
+2. You need to communicate with RemoteVal and get Client key
 
-2. You need to set `Development Environment and Provide Your Client Key` using configSDK function and put this code in viewDidLoad()
+3. You need to set `Development Environment and Provide Your Client Key` using configSDK function and put this code in viewDidLoad()
 
 ```swift
 
@@ -145,7 +147,7 @@ RVConfigClass.shared.configSDK(environment: RemoteValEnvironmet.dev, clientKey: 
 - In argument first you have to pass Development Environment  which is `RemoteValEnvironment` type.
 - The second you have to pass `Your_Client_key`.
 
-3. The way to use `RvVideoBaseScan` as a `UIViewController`
+4. The way to use `RvVideoBaseScan` as a `UIViewController`
 
 ```swift
 import RemotevalSDK
