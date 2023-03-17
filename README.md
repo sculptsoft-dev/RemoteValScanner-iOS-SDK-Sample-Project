@@ -39,6 +39,7 @@ This implementation was made with Xcode.
 The preferred (and easiest) way to install the Remoteval SDK is with cocoa pods. Add the following to your `Podfile`:
 
 ```swift
+pod 'SSRemoteValSDK'
 ```
 
 ### Setting up
@@ -81,6 +82,22 @@ For a better user experience add these two methods in your Appdelegate.swift fil
     }
 
 ```
+
+### Background process handle
+- Use of this methods is you can restart scanning when application gone in background state in between of scanning.
+- Put these methods in `AppDelegate.swift` file.
+
+```swift
+func applicationDidEnterBackground(_ application: UIApplication) {
+    RVConfigClass.shared.applicationStateEnterInBackground(window: self.window)
+}
+    
+func applicationDidBecomeActive(_ application: UIApplication) {
+    RVConfigClass.shared.applicationStateBecomeInActive(window: self.window)
+}
+```
+- You have to pass window in param.
+
 
 ## Remoteval SDK Features
 
