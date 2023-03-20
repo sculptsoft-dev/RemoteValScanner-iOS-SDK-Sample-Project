@@ -158,7 +158,7 @@ videoBaseScanVC.floorName = self.floorName
 self.navigationController?.pushViewController(videoBaseScanVC, animated: true)
 ```
 Note: Here you need to provide `jobOrderId` and `floorName` to VideoBaseScan class.
-jobOrderId and floorName require because of creating a Zip file and you get fileName.
+jobOrderId and floorName require because of creating a Zip file .
 
 
 ## Uploading Part
@@ -245,9 +245,8 @@ RVConfigClass.shared.uploadFloorScanDetail(jobOrderId: jobOrderId,
 6. After Upload floor scan Technician will create Floor plan and they complete job inspection.
 On Complete Job inspection RemoteVal Back end will notify the respective Back End using Webhook url.
 
-7. After getting notification respective backend want to call api for floor plan report
-Get the information for api integration from a given doc url (third party integration url) .
-From this doc have to call Download job Order pdf report (Approach 2 ) for floor plan
+7. After getting notification respective backend want to call RemoteVal api for floor plan report.
+For api call refer integration sdk documnetation.
 
 
 ## Custom Localization
